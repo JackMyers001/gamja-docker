@@ -43,11 +43,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Retrieve GAMJA_VERSION from Dockerfile
+        run: echo "GAMJA_VERSION=$(grep -m1 -oP '(?<=ENV GAMJA_VERSION=).*' Dockerfile)" >> $GITHUB_ENV
+
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5.5.1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          labels: |
+            org.opencontainers.image.title=Ganja
+            org.opencontainers.image.description=A simple IRC web client
+            org.opencontainers.image.author=Jack Myers
+            org.opencontainers.image.vendor=emersion
+            org.opencontainers.image.version=${{ env.GAMJA_VERSION }}
           tags: |
               type=ref,event=branch
               type=semver,pattern={{version}}
