@@ -2,7 +2,7 @@ FROM node:lts-alpine as build
 
 WORKDIR /build
 
-ARG GAMJA_VERSION=v1.0.0-beta.9
+ENV GAMJA_VERSION=v1.0.0-beta.9
 
 RUN apk add --no-cache git && \
     git clone --depth 1 --branch ${GAMJA_VERSION} https://git.sr.ht/~emersion/gamja /build && \
