@@ -14,7 +14,7 @@ FROM nginx:1.25-alpine-slim
 LABEL org.opencontainers.image.authors="Jack Myers"
 LABEL org.opencontainers.image.title="Gamja"
 LABEL org.opencontainers.image.description="A simple IRC web client"
-LABEL org.opencontainers.image.source="https://github.com/jmyers/projects/gamja-docker"
+LABEL org.opencontainers.image.source="https://github.com/JackMyers001/gamja-docker"
 LABEL org.opencontainers.image.version=${GAMJA_VERSION}
 
 COPY --from=build /build/dist /usr/share/nginx/html
